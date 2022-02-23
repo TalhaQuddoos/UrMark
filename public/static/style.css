@@ -82,7 +82,7 @@ h1 {
 }
 h2 {
     display: block;
-    margin: 0 auto 60px auto;
+    margin: 0 auto 12px auto;
     text-align: center;
     font-weight: 400;
     font-size: 1.25em;
@@ -182,4 +182,14 @@ h2 {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.gh-repo-link {
+    font-size: 16px;
+    margin-bottom: 60px;
+
+}
+
+.gh-repo-link a {
+    text-decoration: underline!important;
 }
