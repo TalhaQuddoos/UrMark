@@ -5,6 +5,7 @@ const htmlFormatter = require("html");
 const {
   parseCSS,
   handleLTR,
+  handleLinks,
   handleCodeBlocks,
   handleRTL,
   convertMarkdown,
@@ -20,6 +21,7 @@ exports.convertToMarkdown = (html) => {
   const parsedCSS = parseCSS(css);
 
   body = parse(handleLTR(body, parsedCSS));
+  body = parse(handleLinks(body));
   body = parse(handleRTL(body));
 
   body = handleCodeBlocks(body);

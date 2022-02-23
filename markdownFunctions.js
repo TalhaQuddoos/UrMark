@@ -8,6 +8,19 @@ exports.parseCSS = (css) => {
   return parser.parseCSS(css);
 };
 
+exports.handleLinks = (root) => {
+  root.querySelectorAll("a").forEach(link => {
+    let href = link.getAttribute("href")
+    if(href && href.startsWith("https://www.google.com/url")) {
+      let url = new URL(href).searchParams.get("q");
+      link.setAttribute("href", url);
+    }
+
+  })
+
+  return root;
+}
+
 exports.handleRTL = (root) => {
   root
     .querySelectorAll(
@@ -105,6 +118,13 @@ turndownService.addRule("inline-code", {
   filter: ["s"],
   replacement: function (content) {
     return "`" + content + "`";
+  },
+});
+
+turndownService.addRule("bold-1", {
+  filter: ["b"],
+  replacement: function (content) {
+    return "**" + content + "** ";
   },
 });
 
